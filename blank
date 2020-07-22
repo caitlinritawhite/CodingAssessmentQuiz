@@ -1,0 +1,90 @@
+questionContainer.addEventListener("click", function(event){
+    if(event.target.matches("li")) {
+        var answer=event.target.innerText;
+
+        var question=questionsList[currentQuestion]
+        if(answer===question.answer){
+            currentScore++
+        }
+        else{
+            currentTime-=5;
+        }
+
+        if(currentQuestion>=questionsList.length){
+            finishQuiz()
+        }
+        else{
+        currentQuestion++;
+        showCurrentQuestion();
+    }
+    }
+});
+function showHighScores() {
+    //retrieve high scores
+    //display high scores
+}
+
+function finishQuiz() {
+    if(currentTime === 0){
+clearInterval(interval);
+//display score
+//store in the high scores if higher than previous score
+    }};
+
+
+
+var questionsList = [
+{
+    question: "Commonly used data types DO NOT include:",
+    options: ["Strings", "Alerts", "Booleans", "Buttons"],
+    answer:"Buttons",
+},
+{
+    question: "The condition of an 'if' / 'else' statement is enclosed within:",
+    options: ["Quotes", "Curly Braces", "Parenthesis", "Square Brackets"],
+    answer:"Curly Braces",
+},
+{
+    question: "Arrays in Javascript can be used to store:",
+    options: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the above"],
+    answer:"Curly Braces",
+},
+{
+    question: "String values must be enclosed within ______ when being assigned to variables:",
+    options: ["Commas", "Curly Braces", "Quotes", "Arrays"],
+    answer:"Curly Braces",
+},
+{
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    options: ["JavaScript", "Terminal/Bash", "For Loops", "Console Log"],
+    answer:"Curly Braces",
+}
+];
+
+
+
+
+
+
+function startQuiz() {
+    showCurrentQuestion();
+    //set the interval to run every second
+    // - update the time counter
+    // - check if time ran out
+    // - if time runs out run finishquiz()
+}
+
+
+
+
+
+
+function finishQuiz(){
+        if(currentTime === 0){
+            clearInterval(interval);
+            var scoreDisplay=document.createElement("h1")
+            scoreDisplay.innerText=("Here is your score!" + currentScore)
+            
+            //display score
+            //store in the high scores if higher than previous score
+        }};

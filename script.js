@@ -2,8 +2,9 @@ var currentQuestion=0;
 var currentScore=0;
 var currentTime=60
 var questionContainer=document.getElementById("container");
-var button = document.getElementById("start")
-var countdown = document.getElementById("countdown")
+var button = document.getElementById("start");
+var countdownEl = document.getElementById("countdown");
+
 
 button.addEventListener("click", function (event){
     event.stopPropagation();
@@ -20,7 +21,7 @@ function updateCountdown(event){
     if(currentTime == 0){
         alert("Time is up!");
         clearInterval(clear);
-        finishQuiz()
+        finishQuiz();
     }
 }
 
@@ -76,7 +77,7 @@ questionContainer.addEventListener("click", function(event){
         if(event.target.matches("li")) {
             var answerClick=event.target.innerText;
     
-            var question=questionsList[currentQuestion]
+            var question=questionsList[currentQuestion];
             if(answerClick===question.answer){
                 currentScore++;
                 currentQuestion++;
@@ -84,27 +85,44 @@ questionContainer.addEventListener("click", function(event){
             else{
                 currentTime-=5;
                 alert("Incorrect! Minus 5 seconds");
+                currentQuestion++
+ 
             }
     
             if(currentQuestion>=questionsList.length){
-                finishQuiz()
+                clearInterval(clear);
+                questionContainer.innerHTML="";
+                finishQuiz();
             }
+
             else{
-            currentQuestion++;
             showCurrentQuestion();
         }
         }
     });
 
+
     function finishQuiz(){
-        if(currentTime === 0){
-            clearInterval(interval);
+        countdown.innerHTML-"";
+        
+        var name=prompt("What is your name?");
+
             var scoreDisplay=document.createElement("h1")
-            scoreDisplay.innerText=("Here is your score!" + currentScore)
+            scoreDisplay.innerText=(name + ": Your score is: " + currentScore);
             
-            //display score
-            //store in the high scores if higher than previous score
-        }};
+            questionContainer.appendChild(scoreDisplay);
+
+            localStorage.setItem("Score", currentScore);
+           var currentHighScore = localStorage.getItem("Score")
+
+           if(currentScore > currentHighScore){
+               localStorage.setItem("Score", currentScore)
+           }
+           }
+       
+        
+      
+  
 
         function showHighScores() {
             //retrieve high scores
