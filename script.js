@@ -2,8 +2,9 @@ var currentQuestion=0;
 var currentScore=0;
 var currentTime=60
 var questionContainer=document.getElementById("container");
-var button = document.getElementById("start")
-var countdown = document.getElementById("countdown")
+var button = document.getElementById("start");
+var countdownEl = document.getElementById("countdown");
+
 
 button.addEventListener("click", function (event){
     event.stopPropagation();
@@ -20,7 +21,7 @@ function updateCountdown(event){
     if(currentTime == 0){
         alert("Time is up!");
         clearInterval(clear);
-        finishQuiz()
+        finishQuiz();
     }
 }
 
@@ -76,7 +77,7 @@ questionContainer.addEventListener("click", function(event){
         if(event.target.matches("li")) {
             var answerClick=event.target.innerText;
     
-            var question=questionsList[currentQuestion]
+            var question=questionsList[currentQuestion];
             if(answerClick===question.answer){
                 currentScore++;
                 currentQuestion++;
@@ -84,29 +85,60 @@ questionContainer.addEventListener("click", function(event){
             else{
                 currentTime-=5;
                 alert("Incorrect! Minus 5 seconds");
+                currentQuestion++
+ 
             }
     
             if(currentQuestion>=questionsList.length){
-                finishQuiz()
+                clearInterval(clear);
+                questionContainer.innerHTML="";
+                finishQuiz();
             }
+
             else{
-            currentQuestion++;
             showCurrentQuestion();
         }
         }
     });
 
+
     function finishQuiz(){
-        if(currentTime === 0){
-            clearInterval(interval);
-            var scoreDisplay=document.createElement("h1")
-            scoreDisplay.innerText=("Here is your score!" + currentScore)
+        countdown.innerHTML-"";
+        var userName= prompt("What is your name?");
+        if(currentHighScore || currentScore >= currentHighScore){
             
-            //display score
-            //store in the high scores if higher than previous score
-        }};
+            localStorage.setItem("Score", currentScore);
+            localStorage.setItem("Name", userName);
+        }
+    
+            var scoreDisplay=document.createElement("h1")
+            scoreDisplay.innerText=(userName + ": Your score is " + currentScore);
+            
+            questionContainer.appendChild(scoreDisplay);
+
+
+           var currentHighScore = localStorage.getItem("Score")
+
+           
+           showHighScores();
+           }
+       
+        
+      
+  
 
         function showHighScores() {
-            //retrieve high scores
-            //display high scores
+
+            var currentHighScore=localStorage.getItem("Score");
+            var userName=localStorage.getItem("Name");
+
+
+            if(currentHighScore && userName){
+                var highScores=document.createElement("h4")
+            highScores.innerText=("Highest Scores: " + userName + " " + currentHighScore );
+            questionContainer.appendChild(highScores);
+            }
+        
+
+            
         }
