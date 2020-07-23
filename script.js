@@ -138,7 +138,7 @@ questionContainer.addEventListener("click", function(event){
 
             if(currentHighScore && userName){
                 var highScores=document.createElement("h4")
-            highScores.innerText=("Highest Scores: " + userName + " " + currentHighScore );
+            highScores.innerText=("Highest Score: " + userName + " " + currentHighScore );
             questionContainer.appendChild(highScores);
             }
         
