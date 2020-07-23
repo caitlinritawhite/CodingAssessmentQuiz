@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .body {
     text-align: center;
     font-family: 'Red Rose', cursive;
@@ -75,3 +76,77 @@ ul {
     font-family: 'Red Rose', cursive;
     text-align: center;
   }
+=======
+.body {
+    text-align: center;
+    font-family: 'Red Rose', cursive;
+
+}
+
+.start-btn {
+    border: none;
+    background-color:  rgb(216, 57, 78);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+      0px;
+    color: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 18px;
+    margin: 16px 16px 16px 20px;
+    padding: 14px 34px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Red Rose', cursive;
+}
+
+
+h1 {
+    font-family: 'Red Rose', cursive;
+    text-align: center;
+    margin-top: 30px;
+}
+li {
+    border: none;
+    background-color: rgb(216, 57, 78);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+      0px;
+      border-radius: 10px;
+    color: hsl(0, 0%, 100%);
+    display: inline-block;
+    font-size: 18px;
+    line-height: 18px;
+    margin: 5px 5px 5px 5px;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Red Rose', cursive;
+}
+
+ul {
+    text-align: center;
+}
+
+#question1 {
+    display: none;
+}
+#question2 {
+    display: none;
+}
+#question3 {
+    display: none;
+}
+#question4 {
+    display: none;
+}
+#question5 {
+    display: none;
+}
+#countdown {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    font-family: 'Red Rose', cursive;
+  }
+>>>>>>> c8bfef9a3f031d5137aae16be774b547ec61cffd
